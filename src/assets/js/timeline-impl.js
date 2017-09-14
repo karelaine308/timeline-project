@@ -1,30 +1,40 @@
 var tl;
 
 function onLoad() {
-  eventSource1 = new Timeline.DefaultEventSource();
-  
+  var eventSourceGov = new Timeline.DefaultEventSource();
+  var eventSourceCommr = new Timeline.DefaultEventSource();
+
   var bandInfos = [
     Timeline.createBandInfo({
+        width:          "20%", 
+        intervalUnit:   Timeline.DateTime.DECADE, 
+        intervalPixels: 200,
+        eventSource: eventSourceGov
+    }),
+    Timeline.createBandInfo({
         width:          "70%", 
-        intervalUnit:   Timeline.DateTime.MONTH, 
-        intervalPixels: 100,
-        eventSource: eventSource1
+        intervalUnit:   Timeline.DateTime.DECADE, 
+        intervalPixels: 200,
+        eventSource: eventSourceCommr
     }),
     Timeline.createBandInfo({
         width:          "30%", 
-        intervalUnit:   Timeline.DateTime.YEAR, 
+        intervalUnit:   Timeline.DateTime.CENTURY, 
         intervalPixels: 200,
-        eventSource: eventSource1
+        eventSource: eventSourceCommr,
+        layout: 'overview'  // original, overview, detailed        
     })
   ];
-
-  bandInfos[1].syncWith = 0;
-  bandInfos[1].highlight = true;
-  
+  bandInfos[0].syncWith = 1;
+  bandInfos[2].syncWith = 1;
+  bandInfos[2].highlight = true;
+  //#0924bf this is the blue for the gov band dem
+  //#db0404 this is the red for the gov band rep
   tl = Timeline.create(document.getElementById("my-timeline"), bandInfos);
 
   var url = '.'; // The base url for image, icon and background image
-  eventSource1.loadJSON(timeline_data, url);
+  eventSourceGov.loadJSON(timeline_dataGov, url);
+  eventSourceCommr.loadJSON(timeline_dataCommr, url);
 }
 
 var resizeTimerID = null;

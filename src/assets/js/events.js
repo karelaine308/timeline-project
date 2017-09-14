@@ -1,13 +1,13 @@
-var timeline_data = {
+var timeline_dataCommr = {
   "events": [
     {
-      "start": "Apr 10 2017 07:50:00 GMT+0530",
-      "end": "Jun 11 2017 17:50:00 GMT+0530",
+      "start": "2015",
+      "end": "2016",
       "durationEvent": true,
-      "title": "whatever",
-      "description": "test",
+      "title": "George B. Wright",
+      "description": "Resigned Oct. 1871",
       "color": "blue",
-      "link": "http://google.com"
+      "link": "https://play.google.com/store/books/details?id=nl4kAQAAIAAJ"
     },
     {
       "start": "Jun 22 2017 07:50:00 GMT+0530",
